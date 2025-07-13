@@ -947,3 +947,16 @@ directionNav: true,
 }, 1000);
 })
 
+document.addEventListener("DOMContentLoaded", function() {
+    // Chỉ chạy script này trên trang chủ
+    if (window.location.pathname === '/') {
+        // Tải danh sách Khóa học
+        const khoaHocUrl = '/feeds/posts/default/-/khóa%20học?max-results=12&orderby=published&alt=json';
+        loadContentAsync(khoaHocUrl, renderProductItem, 'danh-sach-khoa-hoc');
+
+        // Tải danh sách Sản phẩm
+        const sanPhamUrl = '/feeds/posts/default/-/Sản%20phẩm%20mới?max-results=12&orderby=published&alt=json';
+        loadContentAsync(sanPhamUrl, renderProductItem, 'danh-sach-san-pham');
+    }
+});
+
