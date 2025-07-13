@@ -891,3 +891,59 @@ jQuery(document).ready(function($){
 	
 
 			 });
+document.addEventListener("DOMContentLoaded", function() {
+    // Chỉ chạy các script này trên trang chủ
+    if (window.location.pathname === '/') {
+        // Tải danh sách Khóa học (dùng hàm có slider)
+        const khoaHocUrl = '/feeds/posts/default/-/khóa%20học?max-results=6&orderby=published&alt=json-in-script';
+        loadContentAsync(khoaHocUrl, renderProductItem, 'danh-sach-khoa-hoc');
+
+        // Tải danh sách Sản phẩm (dùng hàm có slider)
+        const sanPhamUrl = '/feeds/posts/default/-/Sản%20phẩm%20mới?max-results=6&orderby=published&alt=json-in-script';
+        loadContentAsync(sanPhamUrl, renderProductItem, 'danh-sach-san-pham');
+
+        // Tải danh sách Tin Tức (dùng hàm không có slider)
+        const allPostsUrl = '/feeds/posts/default?max-results=50&orderby=published&alt=json-in-script';
+		loadAndFilterNewsSlider(allPostsUrl, renderNewsItem, 'news-list-container', 12);
+    }
+});
+		$(document).ready(function() {
+window.addEventListener('load', function() {
+setTimeout(function(){
+
+			$('.slider-container').flexslider({
+				namespace: "leo-", 
+				animation: "slide",
+				smoothHeight: false
+			});
+			$('.slider-container-multiple').flexslider({
+            animation: "slide",
+//namespace: "leo-", 
+            animationLoop: true,
+            itemWidth: 290,
+            itemMargin: 5,
+directionNav: true,
+                controlNav: true,
+
+			});
+			$('.slider-container-multiple-dichvu').flexslider({
+            animation: "slide",
+//namespace: "leo-", 
+            animationLoop: true,
+            itemWidth: 320,
+            itemMargin: 5,
+directionNav: true,
+                controlNav: true,
+			});
+  		$('.slider-container-multiple-course').flexslider({
+            animation: "slide",
+            animationLoop: true,
+            itemWidth: 400,
+			itemHeight: 600,
+            itemMargin: 5
+			});
+		});
+
+}, 1000);
+})
+
